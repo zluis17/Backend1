@@ -15,10 +15,11 @@ app.get('/', (req, res) => {
 
 const startServer = async () => {
     try {
-        await db.authenticate();
-        console.log('Conexión exitosa a la base de datos');
+        await db.sync()
+        app.listen(process.env.PORT)
+        console.log(`App escuchando en el puerto: ${process.env.PORT}`)
     } catch (error) {
-        console.log(`El error de conexión es: ${error}`);
+        console.error('no se conecto la bd')
     }
 };
 
